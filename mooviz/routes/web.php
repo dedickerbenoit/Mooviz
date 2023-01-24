@@ -16,7 +16,7 @@ use App\Http\Controllers\MovieController;
 */
 
 Route::get('/', [MovieController::class, 'index'])->name('home');
-Route::get('/{id}', [MovieController::class, 'show'])->name('show.movie');
+Route::get('/movies/{id}', [MovieController::class, 'show'])->name('show.movie');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -8,7 +8,7 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * It specifies the structure of the table movies
      * @return void
      */
     public function up()

@@ -1,3 +1,4 @@
+<!-- Allows you to modify a movie in the database. -->
 <h1>Modify a Movie</h1>
 
     <form method="POST" action="{{ route('update.movie', $movie['id']) }}">

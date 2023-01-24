@@ -1,3 +1,4 @@
+<!-- Displays a movie for non-connected people. -->
 <div class="grid grid-cols-2">
     <button class="w-fit mx-auto text-xl px-6 py-4">
         <a href="/">

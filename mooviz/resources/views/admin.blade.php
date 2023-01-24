@@ -22,7 +22,7 @@
             <a href="{{route('movies.api')}}">Movies from API </a>
         </button>
         <button>
-            <a href="{{ route('movies')}}">Movies in DB</a>
+            <a href="{{ route('admin')}}">Movies in DB</a>
         </button>
     </div>
     @if (isset ($period))

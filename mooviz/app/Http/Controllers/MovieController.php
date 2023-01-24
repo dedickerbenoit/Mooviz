@@ -23,7 +23,7 @@ class MovieController extends Controller
 
 
     /**
-     * Display the specified resource.
+     * Display the specified resource for non-connected people.
      *
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response

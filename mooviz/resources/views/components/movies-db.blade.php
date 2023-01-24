@@ -1,3 +1,6 @@
+<!-- display all the movies in the database for the admin.
+It is possible to modify or delete a movie. -->
+
 <h2>MOVIES FROM THE DB</h2>
 
 @foreach($movies as $movie)

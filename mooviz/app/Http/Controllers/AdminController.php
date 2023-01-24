@@ -20,7 +20,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource for admin to update or cancel and return in admin page.
      *
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response

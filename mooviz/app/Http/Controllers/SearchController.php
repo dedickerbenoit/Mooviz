@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+    /**
+    *It allows to search a movie by title
+    */
     public function index(Request $request)
 {
     $query = $request->input('q');

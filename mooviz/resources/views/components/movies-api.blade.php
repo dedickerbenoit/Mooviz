@@ -1,3 +1,6 @@
+<!-- display movies list from API to connected-people. This is a weekly or daily trending movie list -->
+<!-- you can add a movie to the DB by clicking on the button "Add the movie to DB" -->
+
 <h2 class="text-2xl">MOVIES FROM THE API</h2>
 
 <h1>

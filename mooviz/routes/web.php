@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------

@@ -47,6 +47,9 @@
             @if(isset($movie))
                 @include('components.movie', ['movie' => $movie])
             @endif
+            @if(isset($results))
+                @include('components.search-movie', ['results' => $results])
+            @endif
 </div>
 
     </body>

@@ -35,6 +35,8 @@
         <button type="submit">Delete this Add</button>
     </form>
     @endforeach
+    {{ $movies->links() }}
+
 
 </body>
 

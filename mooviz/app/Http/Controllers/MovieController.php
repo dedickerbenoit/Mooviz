@@ -15,8 +15,8 @@ class MovieController extends Controller
      */
     public function displayFromApi()
     {
-        $movies = Http::get("https://api.themoviedb.org/3/movie/popular?api_key=295727b3dab652895429e8cf7a69375e&language=en-US&page=1")
-            ->json()['results'];
+        $movies = Http::get("https://api.themoviedb.org/3/movie/popular?api_key=".env('API_KEY_MOVIEDB')."&language=en-US&page=1")
+        ->json()['results'];
         // dd($movies);
         return view('moviesApi', ['moviesApi' => $movies]);
     }
@@ -29,6 +29,7 @@ class MovieController extends Controller
     public function index()
     {
         $movies = Movie::all();
+        $movies = Movie::paginate(5);
         return view('movies', ['movies' => $movies]);
     }
 
@@ -72,6 +73,7 @@ class MovieController extends Controller
                 'vote_count' => $request->vote_count,
             ]
         );
+        return redirect()->route('movies');
     }
 
     /**

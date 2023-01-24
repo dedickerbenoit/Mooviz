@@ -15,9 +15,8 @@ use App\Http\Controllers\MovieController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MovieController::class, 'index'])->name('home');
+Route::get('/{id}', [MovieController::class, 'show'])->name('show.movie');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,10 +29,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/movies/api', [MovieController::class, 'displayFromApi'])->name('movies.api');
 
-
     Route::post('/movies', [MovieController::class, 'store'])->name('store.movie');
-    Route::get('/movies', [MovieController::class, 'index'])->name('movies');
-    Route::get('/movies/{id}', [MovieController::class, 'show'])->name('show.movie');
+    // Route::get('/movies', [MovieController::class, 'index'])->name('movies');
+    // Route::get('/movies/{id}', [MovieController::class, 'show'])->name('show.movie');
     Route::patch('/movies/{id}', [MovieController::class, 'update'])->name('update.movie');
     Route::delete('/movies/{id}', [MovieController::class, 'destroy'])->name('destroy.movie');
 });

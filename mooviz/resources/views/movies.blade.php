@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>My Movies</title>
-</head>
-
-<body>
-    <h1>My Movies</h1>
-
 
     @foreach($movies as $movie)
     <form method="GET" action="{{ route('show.movie', $movie['id']) }}">
@@ -35,10 +25,8 @@
         <button type="submit">Delete this Add</button>
     </form>
     @endforeach
-    {{ $movies->links() }}
+    <div class="h-10">
+        {{ $movies->links() }}
+    </div>
+    
 
-
-</body>
-
-
-</html>

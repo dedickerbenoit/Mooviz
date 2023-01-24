@@ -28,9 +28,10 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
+        // $movies = Movie::all();
         $movies = Movie::paginate(5);
-        return view('movies', ['movies' => $movies]);
+        // dd($movies);
+        return view('welcome', ['movies' => $movies]);
     }
 
     /**
@@ -82,10 +83,15 @@ class MovieController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
+    // public function show($id)
+    // {
+    //     $movie = Movie::find($id);
+    //     return view('showMovie', ['movie' => $movie]);
+    // }
     public function show($id)
     {
         $movie = Movie::find($id);
-        return view('showMovie', ['movie' => $movie]);
+        return view('welcome', ['movie' => $movie]);
     }
 
     /**

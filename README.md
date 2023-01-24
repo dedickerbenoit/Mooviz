@@ -3,7 +3,7 @@
 
 This is an example of a Laravel application using a MySQL database and dockerisation with Sail.
 
-## VERSION
+## Version
 -   Laravel: 8.x ([https://laravel.com/docs/8.x](https://laravel.com/docs/8.x))
 -   PHP: 8.2.1 ([https://windows.php.net/downloads/releases/php-8.2.1-nts-Win32-vc15-x64.zip](https://windows.php.net/downloads/releases/php-8.2.1-nts-Win32-vc15-x64.zip))
 -   MySQL: 8.0 ([https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/))

@@ -9,73 +9,18 @@ use Illuminate\Support\Facades\Http;
 
 class MovieController extends Controller
 {
+    
     /**
-     * Display movies from the Api https://www.themoviedb.org/
-     * @return \Illuminate\Http\Response
-     */
-    public function displayFromApi(Request $request)
-    {
-        $period = $request->input('period', 'day');
-        $movies = Http::get("https://api.themoviedb.org/3/trending/movie/{$period}?api_key=" . env('API_KEY_MOVIEDB') . "&language=en-US&page=1")
-            ->json()['results'];
-        return view('moviesApi', ['moviesApi' => $movies, 'period' => $period]);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
+     * Display all the movies in the DB with pagination for 
+     *non-connected people
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        // $movies = Movie::all();
         $movies = Movie::paginate(5);
-        // dd($movies);
         return view('welcome', ['movies' => $movies]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-        $request->validate(
-            [
-                'title' => 'required',
-                'overview' => 'required',
-                'release_date' => 'required',
-                'poster_path' => 'required',
-                'vote_average' => 'required',
-                'vote_count' => 'required',
-            ]
-        );
-
-        $movie = Movie::create(
-            [
-                'title' => $request->title,
-                'overview' => $request->overview,
-                'release_date' => $request->release_date,
-                'poster_path' => $request->poster_path,
-                'vote_average' => $request->vote_average,
-                'vote_count' => $request->vote_count,
-            ]
-        );
-        return redirect()->route('movies');
-    }
 
     /**
      * Display the specified resource.
@@ -83,71 +28,10 @@ class MovieController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    // public function show($id)
-    // {
-    //     $movie = Movie::find($id);
-    //     return view('showMovie', ['movie' => $movie]);
-    // }
     public function show($id)
     {
         $movie = Movie::find($id);
         return view('welcome', ['movie' => $movie]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Movie  $movie
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Movie $movie)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Movie  $movie
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $request->validate(
-            [
-                'title' => 'required',
-                'overview' => 'required',
-                'release_date' => 'required',
-                'poster_path' => 'required',
-                'vote_average' => 'required',
-                'vote_count' => 'required',
-            ]
-        );
-        $movie = Movie::find($id);
-        $movie->update(
-            [
-                'title' => $request->title,
-                'overview' => $request->overview,
-                'release_date' => $request->release_date,
-                'poster_path' => $request->poster_path,
-                'vote_average' => $request->vote_average,
-                'vote_count' => $request->vote_count,
-            ]
-        );
-        return redirect()->route('movies');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Movie  $movie
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $movie = Movie::find($id);
-        $movie->delete();
-        return redirect()->route('movies');
-    }
 }

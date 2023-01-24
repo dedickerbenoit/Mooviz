@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
-
+use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,8 @@ use App\Http\Controllers\MovieController;
 Route::get('/', [MovieController::class, 'index'])->name('home');
 Route::get('/movies/{id}', [MovieController::class, 'show'])->name('show.movie');
 
+Route::get('/search', [SearchController::class, 'index'])->name('search');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -27,13 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/movies/api', [MovieController::class, 'displayFromApi'])->name('movies.api');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/movies/api', [AdminController::class, 'displayFromApi'])->name('movies.api');
 
-    Route::post('/movies', [MovieController::class, 'store'])->name('store.movie');
-    // Route::get('/movies', [MovieController::class, 'index'])->name('movies');
-    // Route::get('/movies/{id}', [MovieController::class, 'show'])->name('show.movie');
-    Route::patch('/movies/{id}', [MovieController::class, 'update'])->name('update.movie');
-    Route::delete('/movies/{id}', [MovieController::class, 'destroy'])->name('destroy.movie');
+    Route::post('/admin/movies', [AdminController::class, 'store'])->name('store.movie');
+    Route::get('/admin/movies', [AdminController::class, 'index'])->name('movies');
+    Route::get('/admin/movies/{id}', [AdminController::class, 'show'])->name('show.movie.admin');
+    Route::patch('/admin/movies/{id}', [AdminController::class, 'update'])->name('update.movie');
+    Route::delete('/admin/movies/{id}', [AdminController::class, 'destroy'])->name('destroy.movie');
 });
 
 require __DIR__ . '/auth.php';

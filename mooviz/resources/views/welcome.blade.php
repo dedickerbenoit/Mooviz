@@ -36,6 +36,10 @@
                 </div>
             @endif
         </div>
+        <form action="{{ route('search') }}" method="GET">
+    <input type="text" name="q" placeholder="Search...">
+    <button type="submit">Search</button>
+</form>
         <div class="flex space-x-16">
             @if(isset($movies))
                 @include('components.movie-list', ['movies' => $movies])

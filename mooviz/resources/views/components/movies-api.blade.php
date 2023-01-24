@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
+<h2 class="text-2xl">MOVIES FROM THE API</h2>
 
-<head>
-    <title>My Movies</title>
-</head>
-
-<body>
-    <h1>
+<h1>
         @if($period == 'day')
         Movies trending daily
         @elseif($period == 'week')
@@ -44,8 +38,3 @@
         <button type="submit">Add the movie to DB</button>
     </form>
     @endforeach
-
-</body>
-
-
-</html>

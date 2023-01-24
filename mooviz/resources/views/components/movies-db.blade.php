@@ -1,6 +1,7 @@
+<h2>MOVIES FROM THE DB</h2>
 
-    @foreach($movies as $movie)
-    <form method="GET" action="{{ route('show.movie', $movie['id']) }}">
+@foreach($movies as $movie)
+    <form method="GET" action="{{ route('show.movie.admin', $movie['id']) }}">
         @csrf
         <input type="hidden" name="title" value="{{ $movie['title'] }}" />
         <input type="hidden" name="overview" value="{{ $movie['overview'] }}" />
@@ -28,5 +29,3 @@
     <div class="h-10">
         {{ $movies->links() }}
     </div>
-    
-

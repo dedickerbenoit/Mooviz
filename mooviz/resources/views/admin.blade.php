@@ -34,5 +34,5 @@
     @if (isset ($movie))
         @include('components.movie-modify')
     @endif
-
+    <a href="https://www.themoviedb.org/" target="_blank">Powered by TMDB</a>
 </body>

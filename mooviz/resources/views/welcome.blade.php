@@ -51,6 +51,7 @@
                 @include('components.search-movie', ['results' => $results])
             @endif
 </div>
-
+ 
+<a href="https://www.themoviedb.org/" target="_blank">Powered by TMDB</a>
     </body>
 </html>

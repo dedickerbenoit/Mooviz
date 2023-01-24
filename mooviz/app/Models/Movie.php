@@ -13,7 +13,7 @@ class Movie extends Model
         'overview',
         'poster_path',
         'release_date',
-        'vote_average'
+        'vote_average',
+        'vote_count'
     ];
-
 }

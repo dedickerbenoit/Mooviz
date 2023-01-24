@@ -18,7 +18,7 @@ class MovieController extends Controller
         $movies = Http::get("https://api.themoviedb.org/3/movie/popular?api_key=295727b3dab652895429e8cf7a69375e&language=en-US&page=1")
             ->json()['results'];
         // dd($movies);
-        return view('movies', ['movies' => $movies]);
+        return view('moviesApi', ['moviesApi' => $movies]);
     }
 
     /**
@@ -28,7 +28,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        $movies = Movie::all();
+        return view('movies', ['movies' => $movies]);
     }
 
     /**
@@ -49,6 +50,7 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate(
             [
                 'title' => 'required',
@@ -70,6 +72,7 @@ class MovieController extends Controller
                 'vote_count' => $request->vote_count,
             ]
         );
+        
     }
 
     /**

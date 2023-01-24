@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
-            $table->string('overview');
+            $table->longText('overview');
             $table->string('poster_path');
             $table->dateTime('release_date');
             $table->string('vote_average');
+            $table->string('vote_count');
             $table->timestamps();
         });
     }

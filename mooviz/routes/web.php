@@ -28,8 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/movies', [MovieController::class, 'displayFromApi'])->name('movies');
+    Route::get('/movies/api', [MovieController::class, 'displayFromApi'])->name('moviesApi');
     Route::post('/movies', [MovieController::class, 'store'])->name('StoreMovie');
+    Route::get('/movies', [MovieController::class, 'index'])->name('movies');
 });
 
 require __DIR__ . '/auth.php';

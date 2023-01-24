@@ -29,8 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/movies/api', [MovieController::class, 'displayFromApi'])->name('moviesApi');
-    Route::post('/movies', [MovieController::class, 'store'])->name('StoreMovie');
+
+    Route::post('/movies', [MovieController::class, 'store'])->name('store.movie');
     Route::get('/movies', [MovieController::class, 'index'])->name('movies');
+    Route::get('/movies/{id}', [MovieController::class, 'show'])->name('show.movie');
+    Route::patch('/movies/{id}', [MovieController::class, 'update'])->name('update.movie');
+    Route::delete('/movies/{id}', [MovieController::class, 'destroy'])->name('destroy.movie');
 });
 
 require __DIR__ . '/auth.php';

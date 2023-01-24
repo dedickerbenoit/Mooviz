@@ -10,7 +10,7 @@
 
 
     @foreach($movies as $movie)
-    <form method="POST" action={{route('StoreMovie')}}>
+    <form method="GET" action="{{ route('show.movie', $movie['id']) }}">
         @csrf
         <input type="hidden" name="title" value="{{ $movie['title'] }}" />
         <input type="hidden" name="overview" value="{{ $movie['overview'] }}" />
@@ -28,7 +28,12 @@
         <p>{{ $movie['vote_count'] }}</p>
         <button type="submit">Modify this Add</button>
     </form>
-    <button type="submit">Delete this Add</button>
+    <form method="POST" action="{{ route('destroy.movie', $movie['id']) }}">
+        @method ('delete')
+        @csrf
+        <input type="hidden" name="id" value="{{ $movie['id'] }}" />
+        <button type="submit">Delete this Add</button>
+    </form>
     @endforeach
 
 </body>

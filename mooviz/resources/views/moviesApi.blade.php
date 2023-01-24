@@ -10,7 +10,7 @@
     
         
         @foreach($moviesApi as $movieApi)
-        <form method="POST" action={{route('StoreMovie')}}>
+        <form method="POST" action="{{route('store.movie') }}">
             @csrf
             <input type="hidden" name="title" value="{{ $movieApi['title'] }}" />
             <input type="hidden" name="overview" value="{{ $movieApi['overview'] }}" />

@@ -72,7 +72,6 @@ class MovieController extends Controller
                 'vote_count' => $request->vote_count,
             ]
         );
-        
     }
 
     /**
@@ -81,9 +80,10 @@ class MovieController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function show(Movie $movie)
+    public function show($id)
     {
-        //
+        $movie = Movie::find($id);
+        return view('showMovie', ['movie' => $movie]);
     }
 
     /**
@@ -104,9 +104,30 @@ class MovieController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Movie $movie)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate(
+            [
+                'title' => 'required',
+                'overview' => 'required',
+                'release_date' => 'required',
+                'poster_path' => 'required',
+                'vote_average' => 'required',
+                'vote_count' => 'required',
+            ]
+        );
+        $movie = Movie::find($id);
+        $movie->update(
+            [
+                'title' => $request->title,
+                'overview' => $request->overview,
+                'release_date' => $request->release_date,
+                'poster_path' => $request->poster_path,
+                'vote_average' => $request->vote_average,
+                'vote_count' => $request->vote_count,
+            ]
+        );
+        return redirect()->route('movies');
     }
 
     /**
@@ -115,8 +136,10 @@ class MovieController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Movie $movie)
+    public function destroy($id)
     {
-        //
+        $movie = Movie::find($id);
+        $movie->delete();
+        return redirect()->route('movies');
     }
 }

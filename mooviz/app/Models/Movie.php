@@ -15,4 +15,5 @@ class Movie extends Model
         'release_date',
         'vote_average'
     ];
+
 }

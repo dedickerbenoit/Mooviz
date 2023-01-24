@@ -13,12 +13,12 @@ class MovieController extends Controller
      * Display movies from the Api https://www.themoviedb.org/
      * @return \Illuminate\Http\Response
      */
-    public function displayFromApi()
+    public function displayFromApi(Request $request)
     {
-        $movies = Http::get("https://api.themoviedb.org/3/movie/popular?api_key=".env('API_KEY_MOVIEDB')."&language=en-US&page=1")
-        ->json()['results'];
-        // dd($movies);
-        return view('moviesApi', ['moviesApi' => $movies]);
+        $period = $request->input('period', 'day');
+        $movies = Http::get("https://api.themoviedb.org/3/trending/movie/{$period}?api_key=" . env('API_KEY_MOVIEDB') . "&language=en-US&page=1")
+            ->json()['results'];
+        return view('moviesApi', ['moviesApi' => $movies, 'period' => $period]);
     }
 
     /**

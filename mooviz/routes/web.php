@@ -28,7 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/movies/api', [MovieController::class, 'displayFromApi'])->name('moviesApi');
+    Route::get('/movies/api', [MovieController::class, 'displayFromApi'])->name('movies.api');
+
 
     Route::post('/movies', [MovieController::class, 'store'])->name('store.movie');
     Route::get('/movies', [MovieController::class, 'index'])->name('movies');

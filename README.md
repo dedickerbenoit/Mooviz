@@ -44,6 +44,10 @@ This is an example of a Laravel application using a MySQL database and dockerisa
 
     ./vendor/bin/sail up 
 
+4.  Run migrations to your Data base
+    
+    ./vendore/bin/sail artisan migrate
+
 4.  Access the application at `http://localhost:80` in your browser
 
 ## Configuration de la base de données

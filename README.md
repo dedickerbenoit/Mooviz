@@ -19,16 +19,30 @@ This is an example of a Laravel application using a MySQL database and dockerisa
 
 1.  Clone the Git repository
 
-git clone https://github.com/dedickerbenoit/Mooviz.git 
+    git clone https://github.com/dedickerbenoit/Mooviz.git 
+    
+2.  Install Composer
+        
+    To install Composer, you need to follow these steps:
+
+        1.  Download the Composer installation file from the official website: [https://getcomposer.org/download/](https://getcomposer.org/download/)
+        2.  Open your terminal and go to the location where you downloaded the installation file.
+        3.  Run the following command to install Composer:
+
+            `php composer-setup.phar install` 
+
+        4.  To verify that the installation was successful, you can run the following command to display the version of Composer:
+
+            composer -v`
 
 2.  Use Sail to build the Docker images
 
-cd Mooviz
-./vendor/bin/sail build` 
+    cd Mooviz
+    ./vendor/bin/sail build` 
 
 3.  Start the Docker containers
 
-./vendor/bin/sail up 
+    ./vendor/bin/sail up 
 
 4.  Access the application at `http://localhost:80` in your browser
 

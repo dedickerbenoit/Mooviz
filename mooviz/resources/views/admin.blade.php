@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -17,22 +18,24 @@
 
 <body>
     @include('layouts.navigation')
-    <div class="grid  justify-center mx-12">
-        <button>
+    <div class="flex place-content-center space-x-10 text-2xl font-bold">
+        <button class="hover:text-red-400">
             <a href="{{route('movies.api')}}">Movies from API </a>
         </button>
-        <button>
+        <button class="hover:text-red-400">
             <a href="{{ route('admin')}}">Movies in DB</a>
         </button>
     </div>
-    @if (isset ($period))
-        @include('components.movies-api')
-    @endif
-    @if (isset ($movies))
-        @include('components.movies-db')
-    @endif
-    @if (isset ($movie))
-        @include('components.movie-modify')
-    @endif
-    <a href="https://www.themoviedb.org/" target="_blank">Powered by TMDB</a>
+    <div class="grid grid-cols-5 gap-2">
+        @if (isset ($period))
+            @include('components.movies-api')
+        @endif
+        @if (isset ($movies))
+            @include('components.movies-db')
+        @endif
+        @if (isset ($movie))
+            @include('components.movie-modify')
+        @endif
+    </div>
+    <a href="https://www.themoviedb.org/" target="_blank" class="hover:underline fixed bottom-0 right-0">Powered by TMDB</a>
 </body>

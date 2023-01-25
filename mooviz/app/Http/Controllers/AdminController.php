@@ -62,18 +62,18 @@ class AdminController extends Controller
                 'vote_count' => 'required',
             ]
         );
-
+        $real_poster_path = "https://image.tmdb.org/t/p/w500" . $request->poster_path;
         $movie = Movie::create(
             [
                 'title' => $request->title,
                 'overview' => $request->overview,
                 'release_date' => $request->release_date,
-                'poster_path' => $request->poster_path,
+                'poster_path' => $real_poster_path,
                 'vote_average' => $request->vote_average,
                 'vote_count' => $request->vote_count,
             ]
         );
-        return redirect()->route('movies');
+        return redirect()->route('admin');
     }
 
     /**
@@ -106,7 +106,7 @@ class AdminController extends Controller
                 'vote_count' => $request->vote_count,
             ]
         );
-        return redirect()->route('movies');
+        return redirect()->route('admin');
     }
 
     /**
@@ -119,6 +119,6 @@ class AdminController extends Controller
     {
         $movie = Movie::find($id);
         $movie->delete();
-        return redirect()->route('movies');
+        return redirect()->route('admin');
     }
 }

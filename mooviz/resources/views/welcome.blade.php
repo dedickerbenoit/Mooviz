@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <script src="https://cdn.tailwindcss.com"></script>        
         <title>Mooviz</title>
 
         <!-- Fonts -->
@@ -36,11 +36,11 @@
                 </div>
             @endif
         </div>
-        <form action="{{ route('search') }}" method="GET">
-    <input type="text" name="q" placeholder="Search...">
-    <button type="submit">Search</button>
-</form>
-        <div class="flex space-x-16">
+        <form action="{{ route('search') }}" method="GET" class="flex justify-center ">
+            <input type="text" name="q" placeholder="Search..." class=" px-6 py-4 border rounded-lg m-2">
+            <button type="submit" class="border rounded-lg px-6 py-4 m-2 hover:border-b-2 hover:border-red-400">Search</button>
+        </form>
+        <div class="grid grid-cols-5 gap-2">
             @if(isset($movies))
                 @include('components.movie-list', ['movies' => $movies])
             @endif
@@ -50,8 +50,7 @@
             @if(isset($results))
                 @include('components.search-movie', ['results' => $results])
             @endif
-</div>
- 
-<a href="https://www.themoviedb.org/" target="_blank">Powered by TMDB</a>
+        </div>
+        <a href="https://www.themoviedb.org/" target="_blank" class="hover:underline fixed bottom-0 right-0">Powered by TMDB</a>
     </body>
 </html>

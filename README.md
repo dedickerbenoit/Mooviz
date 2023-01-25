@@ -1,4 +1,3 @@
-
 # Mooviz
 
 This is an example of a Laravel application using a MySQL database and dockerisation with Sail.
@@ -25,42 +24,50 @@ This is an example of a Laravel application using a MySQL database and dockerisa
         
     To install Composer, you need to follow these steps:
 
-        1.  Download the Composer installation file from the official website: [https://getcomposer.org/download/](https://getcomposer.org/download/)
-        2.  Open your terminal and go to the location where you downloaded the installation file.
-        3.  Run the following command to install Composer:
+        a.  Download the Composer installation file from the official website: [https://getcomposer.org/download/](https://getcomposer.org/download/)
+        b.  Open your terminal and go to the location where you downloaded the installation file.
+        c.  Run the following command to install Composer:
 
             `php composer-setup.phar install` 
 
-        4.  To verify that the installation was successful, you can run the following command to display the version of Composer:
+        d.  To verify that the installation was successful, you can run the following command to display the version of Composer:
 
-            composer -v`
+			`composer -v`
 
 2.  Use Sail to build the Docker images
 
-    cd Mooviz
-    ./vendor/bin/sail build` 
+		`cd Mooviz`
+		`./vendor/bin/sail build`
 
 3.  Start the Docker containers
 
-    ./vendor/bin/sail up 
+		`./vendor/bin/sail up `
 
 4.  Run migrations to your Data base
     
-    ./vendore/bin/sail artisan migrate
+	    `./vendor/bin/sail artisan migrate`
 
-4.  Access the application at `http://localhost:80` in your browser
+5.  Access the application at `http://localhost:80` in your browser
 
 ## Configuration de la base de données
 
 The database connection information is in the `.env` file.
-You need to add your API key to make database queries to https://developers.themoviedb.org/3. Note "API_KEY_MOVIEDB = 'your_key' ".
+By default, you have:
+		`DB_CONNECTION=mysql`
+		`DB_HOST=mysql`
+		`DB_PORT=3306`
+		`DB_DATABASE=mooviz`
+		`DB_USERNAME=sail`
+		`DB_PASSWORD=password`
+You need to add your API key to make database queries to https://developers.themoviedb.org/3. 
+Note `API_KEY_MOVIEDB = 'your_key'`
 Make sure you configure the appropriate settings before starting the Docker containers.
 
 ## Commandes utiles
 
 - To shut down Docker Containers: `./vendor/bin/sail down`.
 - To access a shell inside a Container: `./vendor/bin/sail exec [container-name] bash`
-- To reset the database: `./vendor/bin/sail artisan migrate:fresh 
+- To reset the database: `./vendor/bin/sail artisan migrate:fresh` 
 
 Note: Using Sail is optional, it is possible to run the containerisation commands directly with Docker or Docker Compose.
 

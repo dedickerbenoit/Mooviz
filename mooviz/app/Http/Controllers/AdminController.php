@@ -62,6 +62,12 @@ class AdminController extends Controller
                 'vote_count' => 'required',
             ]
         );
+        //Check if the movie already exists in the DB
+        $existingMovie = Movie::where('title', $request->title)->first();
+        if ($existingMovie) {
+            // dd('Le film existe déjà');
+            return redirect()->back()->withErrors(['The moovie already exists in the DB ...']);
+        }
         $real_poster_path = "https://image.tmdb.org/t/p/w500" . $request->poster_path;
         $movie = Movie::create(
             [
@@ -95,6 +101,13 @@ class AdminController extends Controller
                 'vote_count' => 'required',
             ]
         );
+
+        //Check if the movie already exists in the DB
+        $existingMovie = Movie::where('title', $request->title)->first();
+        if ($existingMovie) {
+            return redirect()->back()->withErrors(['This title already exists in the DB ...']);
+        }
+
         $movie = Movie::find($id);
         $movie->update(
             [

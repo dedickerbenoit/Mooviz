@@ -26,15 +26,24 @@
             <a href="{{ route('admin')}}">Movies in DB</a>
         </button>
     </div>
+    @if($errors->any())
+    <div class="text-red-400 alert alert-danger font-bold border-2 border-red-400 px-4 py-2 w-fit rounded-lg">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="grid grid-cols-5 gap-2">
         @if (isset ($period))
-            @include('components.movies-api')
+        @include('components.movies-api')
         @endif
         @if (isset ($movies))
-            @include('components.movies-db')
+        @include('components.movies-db')
         @endif
         @if (isset ($movie))
-            @include('components.movie-modify')
+        @include('components.movie-modify')
         @endif
     </div>
     <a href="https://www.themoviedb.org/" target="_blank" class="hover:underline fixed bottom-0 right-0">Powered by TMDB</a>
